@@ -1,12 +1,10 @@
 import { Module } from '@nestjs/common';
-import { UserModule } from './user/user.module';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { CityController } from './city/city.controller';
-import { CityService } from './city/city.service';
+import { UserModule } from './user/user.module';
 import { StateModule } from './state/state.module';
-import { CityModule } from './city/city.module';
 import { AddressModule } from './address/address.module';
+import { CityModule } from './city/city.module';
 
 @Module({
   imports: [
@@ -24,12 +22,12 @@ import { AddressModule } from './address/address.module';
       migrations: [`${__dirname}/migration/{.ts,*.js}`],
       migrationsRun: true,
     }),
+    CityModule,
     UserModule,
     StateModule,
-    CityModule,
     AddressModule,
   ],
-  controllers: [CityController],
-  providers: [CityService],
+  controllers: [],
+  providers: [],
 })
 export class AppModule {}
